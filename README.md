@@ -11,19 +11,19 @@ A full-stack application for booking meeting rooms with dynamic pricing, conflic
 
 - **Room Management**: Browse available meeting rooms with capacity and pricing
 - **Smart Booking**: Create bookings with automatic conflict detection
-- **Dynamic Pricing**: Peak hour pricing (1.5x) during Mon-Fri 10AM-1PM & 4PM-7PM
+- **Dynamic Pricing**: Peak hour pricing (1.5×) during Mon–Fri 10:00–13:00 & 16:00–19:00
 - **Cancellation Policy**: Cancel bookings up to 2 hours before start time
 - **Analytics Dashboard**: View utilization and revenue metrics by date range
 
 ## 🛠️ Tech Stack
 
-**Backend:**
+**Backend**
 - Node.js + TypeScript
 - Express.js
-- In-memory data storage
+- In-memory data storage (demo)
 
-**Frontend:**
-- React 18
+**Frontend**
+- React 18 (Vite)
 - Tailwind CSS
 - Lucide Icons
 
@@ -32,7 +32,7 @@ A full-stack application for booking meeting rooms with dynamic pricing, conflic
 ### Prerequisites
 - Node.js 18+ and npm
 
-### Backend Setup
+### Backend (development)
 
 ```bash
 cd backend
@@ -86,48 +86,6 @@ Content-Type: application/json
 
 **Request:**
 ```json
-{
-  # Workspace Booking & Pricing System
-
-  A full-stack demo for booking meeting rooms with dynamic pricing, conflict prevention, and simple analytics.
-
-  ## Live Deployment (optional)
-
-  - Frontend: replace with your deployed URL (e.g. `https://your-frontend.example`)
-  - Backend API: replace with your API URL (e.g. `https://your-backend.example/api`)
-
-  ## Features
-
-  - Room browse and details (capacity, hourly rate)
-  - Create bookings with conflict detection
-  - Dynamic pricing with peak-hour multipliers
-  - Simple cancellation rules (must cancel >2 hours before start)
-  - Admin analytics for utilization and revenue by date range
-
-  ## Tech Stack
-
-  Backend
-  - Node.js + TypeScript
-  - Express
-  - In-memory data (suitable for local demos)
-
-  Frontend
-  - React 18 + TypeScript
-  - Tailwind CSS
-  - Vite dev server
-
-  ## Installation & Setup
-
-  Prerequisites
-  - Node.js 18+ and npm
-
-  Backend
-
-  ```powershell
-  cd backend
-  npm install
-  npm run dev
-  ```
 
   The backend listens on `http://localhost:3000` by default (use `PORT` env to override).
 
