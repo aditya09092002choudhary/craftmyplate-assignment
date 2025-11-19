@@ -87,15 +87,12 @@ Content-Type: application/json
 **Request:**
 ```json
 
-  The backend listens on `http://localhost:3000` by default (use `PORT` env to override).
-
-  Frontend
-
-  ```powershell
-  cd frontend
-  npm install
-  npm run dev
-  ```
+  {
+    "roomId": "101",
+    "userName": "Priya",
+    "startTime": "2025-11-20T10:00:00.000Z",
+    "endTime": "2025-11-20T12:30:00.000Z"
+  }
 
   The Vite dev server runs typically at `http://localhost:5173/`.
 
