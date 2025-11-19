@@ -4,8 +4,8 @@ A full-stack application for booking meeting rooms with dynamic pricing, conflic
 
 ## 🚀 Live Deployment
 
-- **Frontend**: https://yourname-workspace.netlify.app
-- **Backend API**: https://workspace-api.onrender.com
+- **Frontend**: https://workspace-booking-system-v1.netlify.app
+- **Backend API**: https://workspace-booking-api.onrender.com/api
 
 ## 📋 Features
 
