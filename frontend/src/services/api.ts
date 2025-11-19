@@ -1,4 +1,4 @@
-const API_BASE = (import.meta as any).env?.VITE_API_URL || 'https://workspace-booking-api.onrender.com/api';
+const API_BASE = (import.meta as any).env?.VITE_API_URL || 'https://workspace-booking-api-kukm.onrender.com/api';
 
 export interface Room {
   id: string;
