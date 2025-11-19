@@ -52,6 +52,8 @@ npm start
 
 The app will open at `http://localhost:3000`
 
+The Vite dev server runs typically at `http://localhost:5173/`.
+
 ## 🔌 API Documentation
 
 ### Base URL
@@ -86,89 +88,87 @@ Content-Type: application/json
 
 **Request:**
 ```json
+{
+  "roomId": "101",
+  "userName": "Priya",
+  "startTime": "2025-11-20T10:00:00.000Z",
+  "endTime": "2025-11-20T12:30:00.000Z"
+}
+```
 
-  {
-    "roomId": "101",
-    "userName": "Priya",
-    "startTime": "2025-11-20T10:00:00.000Z",
-    "endTime": "2025-11-20T12:30:00.000Z"
-  }
+## API (examples)
 
-  The Vite dev server runs typically at `http://localhost:5173/`.
+Base URL (example): `https://your-backend.example/api`
 
-  ## API (examples)
+Endpoints
 
-  Base URL (example): `https://your-backend.example/api`
+1) GET /api/rooms — list rooms
 
-  Endpoints
+2) POST /api/bookings — create a booking
 
-  1) GET /api/rooms — list rooms
+Request body example
+```json
+{
+  "roomId": "101",
+  "userName": "Priya",
+  "startTime": "2025-11-20T10:00:00.000Z",
+  "endTime": "2025-11-20T12:30:00.000Z"
+}
+```
 
-  2) POST /api/bookings — create a booking
+Success response
+```json
+{
+  "bookingId": "b123",
+  "roomId": "101",
+  "userName": "Priya",
+  "startTime": "2025-11-20T10:00:00.000Z",
+  "endTime": "2025-11-20T12:30:00.000Z",
+  "totalPrice": 975,
+  "status": "CONFIRMED"
+}
+```
 
-  Request body example
-  ```json
-  {
-    "roomId": "101",
-    "userName": "Priya",
-    "startTime": "2025-11-20T10:00:00.000Z",
-    "endTime": "2025-11-20T12:30:00.000Z"
-  }
-  ```
+3) GET /api/bookings — list bookings
 
-  Success response
-  ```json
-  {
-    "bookingId": "b123",
-    "roomId": "101",
-    "userName": "Priya",
-    "startTime": "2025-11-20T10:00:00.000Z",
-    "endTime": "2025-11-20T12:30:00.000Z",
-    "totalPrice": 975,
-    "status": "CONFIRMED"
-  }
-  ```
+4) POST /api/bookings/:id/cancel — cancel booking
 
-  3) GET /api/bookings — list bookings
+5) GET /api/analytics?from=YYYY-MM-DD&to=YYYY-MM-DD — analytics
 
-  4) POST /api/bookings/:id/cancel — cancel booking
+## Business rules (summary)
 
-  5) GET /api/analytics?from=YYYY-MM-DD&to=YYYY-MM-DD — analytics
+- Start must be before end; max duration 12 hours
+- No bookings in the past
+- No overlapping bookings for the same room
+- Peak hours use a 1.5× multiplier (weekday mornings and evenings)
 
-  ## Business rules (summary)
+## Example: peak-time booking calculation
 
-  - Start must be before end; max duration 12 hours
-  - No bookings in the past
-  - No overlapping bookings for the same room
-  - Peak hours use a 1.5× multiplier (weekday mornings and evenings)
+- Base rate: ₹300/hr
+- Booking 10:00–12:30 (2.5 hours) during peak → 2.5 × 300 × 1.5 = ₹1,125
 
-  ## Example: peak-time booking calculation
+## Deployment notes
 
-  - Base rate: ₹300/hr
-  - Booking 10:00–12:30 (2.5 hours) during peak → 2.5 × 300 × 1.5 = ₹1,125
+Backend: build and run on your chosen host; set `PORT` env variable.
 
-  ## Deployment notes
+Frontend: build (`npm run build`) and deploy the static output to your host.
 
-  Backend: build and run on your chosen host; set `PORT` env variable.
+## Testing checklist
 
-  Frontend: build (`npm run build`) and deploy the static output to your host.
+- Create overlapping bookings to verify conflict detection
+- Book during peak vs off-peak to verify pricing
+- Attempt cancellation within and outside the allowed window
+- Verify analytics excludes cancelled bookings
 
-  ## Testing checklist
+## Notes
 
-  - Create overlapping bookings to verify conflict detection
-  - Book during peak vs off-peak to verify pricing
-  - Attempt cancellation within and outside the allowed window
-  - Verify analytics excludes cancelled bookings
+- Times are handled in IST for display; backend stores ISO timestamps.
+- Storage is in-memory for this demo and will reset on restart.
 
-  ## Notes
+## Author
 
-  - Times are handled in IST for display; backend stores ISO timestamps.
-  - Storage is in-memory for this demo and will reset on restart.
+This project was implemented as part of an assignment; code and docs were reviewed and refined by the author.
 
-  ## Author
+## License
 
-  This project was implemented as part of an assignment; code and docs were reviewed and refined by the author.
-
-  ## License
-
-  MIT
+MIT
