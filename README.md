@@ -56,7 +56,7 @@ The app will open at `http://localhost:3000`
 
 ### Base URL
 ```
-https://workspace-api.onrender.com/api
+https://workspace-booking-api-kukm.onrender.com/api
 ```
 
 ### Endpoints
